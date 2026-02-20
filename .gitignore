@@ -10,6 +10,9 @@ __pycache__/
 .venv/
 venv/
 
+app/
+twilio_test.py
+twilio_test2.py
 
 # Docker
 Dockerfile

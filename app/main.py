@@ -17,7 +17,6 @@ client = AsyncOpenAI()
 
 #TTS
 async def tts(text: str):
-
     if not text or not text.strip():
         return
 
@@ -77,7 +76,7 @@ async def main():
                     phrase_time_limit=20   # allow up to 20 sec speaking
                 )
 
-                print("Processing audio")
+                print("Processing audio...")
                 user_query = await openai_stt(audio)
 
                 #ignore silence

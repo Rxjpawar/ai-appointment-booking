@@ -15,7 +15,6 @@ load_dotenv()
 
 llm = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct")
 
-
 available_tools = [
     get_current_date_time,
     book_appointment,
@@ -29,14 +28,12 @@ llm_with_tools = llm.bind_tools(tools=available_tools)
 class State(TypedDict):
     messages: Annotated[list, add_messages]
 
-
-
 def chatbot(state: State):
 
     last_message = state["messages"][-1]
     user_message = last_message.content
 
-    if len(user_message.split()) < 4:
+    if len(user_message.split()) < 1:
         memories = []
     else:
         relevant_memories = mem_client.search(
@@ -59,10 +56,7 @@ def chatbot(state: State):
             response_chunks.append(chunk.content)
 
     final_response = "".join(response_chunks)
-
-    
     return {"messages": [AIMessage(content=final_response)]}
-
 
 # tool Node
 tool_node = ToolNode(tools=available_tools)
