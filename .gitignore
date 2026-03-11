@@ -10,7 +10,7 @@ __pycache__/
 .venv/
 venv/
 
-app/
+main2.py
 twilio_test.py
 twilio_test2.py
 
